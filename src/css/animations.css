@@ -1,0 +1,107 @@
+/*
+  Animations
+  Breathing effect, scroll fade-in, transitions
+*/
+
+/* Breathing Animation for Hero Symbol */
+.hero-symbol {
+  animation: breathing var(--duration-breathing) ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes breathing {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+/* Fade-in on Scroll */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--duration-slow) var(--ease-out-expo),
+              transform var(--duration-slow) var(--ease-out-expo);
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Add stagger delay to multiple fade-in elements */
+.fade-in:nth-child(1) {
+  transition-delay: 0ms;
+}
+
+.fade-in:nth-child(2) {
+  transition-delay: 100ms;
+}
+
+.fade-in:nth-child(3) {
+  transition-delay: 200ms;
+}
+
+.fade-in:nth-child(4) {
+  transition-delay: 300ms;
+}
+
+/* Smooth Transitions */
+* {
+  transition-property: none;
+}
+
+a,
+button,
+input,
+select,
+textarea {
+  transition-property: color, background-color, border-color, opacity, transform;
+  transition-duration: var(--duration-normal);
+  transition-timing-function: ease;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .fade-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero-symbol {
+    animation: none;
+  }
+}
+
+/* Hover Subtle Effects */
+.symbol-item,
+.footer-social a,
+.toggle-btn,
+.lang-btn {
+  will-change: transform, opacity;
+}
+
+/* Page Load Animation */
+@keyframes fadeInPage {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+body {
+  animation: fadeInPage var(--duration-slow) ease-out;
+}

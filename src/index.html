@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Místo pro lidi, kteří hledají skutečný směr, ne další návod.">
+  <meta name="author" content="MOTIVUS z.s.">
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="MOTIVUS — Než uděláte další krok">
+  <meta property="og:description" content="Místo pro lidi, kteří hledají skutečný směr, ne další návod.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://motivus.cz">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <title>MOTIVUS — Než uděláte další krok</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="../media/logo.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+  <!-- SECTION 1: HERO — Tiché přivítání -->
+  <section class="section section-hero" aria-label="Hero">
+    <div class="container">
+      <div class="hero-content">
+        <!-- Main breathing circle symbol -->
+        <svg class="hero-symbol" width="200" height="200" viewBox="0 0 200 200" aria-hidden="true">
+          <circle
+            cx="100"
+            cy="100"
+            r="80"
+            fill="none"
+            stroke="var(--color-accent)"
+            stroke-width="2"
+          />
+        </svg>
+
+        <h1 class="hero-text" data-i18n="hero">Než uděláte další krok.</h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: NAPĚTÍ — Tiché sdělení -->
+  <section class="section section-tension" aria-label="About">
+    <div class="container">
+      <div class="tension-content fade-in">
+        <p class="tension-line-1" data-i18n="tension1">Něco se chystá.</p>
+        <p class="tension-line-2" data-i18n="tension2">Místo pro lidi, kteří hledají skutečný směr, ne další návod.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: SYMBOLIKA — Vizuální jazyk -->
+  <section class="section section-symbols" aria-label="Our Vision">
+    <div class="container">
+      <div class="symbols-grid">
+        <!-- Individual -->
+        <div class="symbol-item fade-in">
+          <svg width="120" height="120" viewBox="0 0 120 120" aria-hidden="true">
+            <circle cx="60" cy="60" r="30" fill="none" stroke="var(--color-accent)" stroke-width="1.5"/>
+          </svg>
+        </div>
+
+        <!-- Pair -->
+        <div class="symbol-item fade-in">
+          <svg width="120" height="120" viewBox="0 0 120 120" aria-hidden="true">
+            <circle cx="45" cy="60" r="20" fill="none" stroke="var(--color-accent)" stroke-width="1.5"/>
+            <circle cx="75" cy="60" r="20" fill="none" stroke="var(--color-accent)" stroke-width="1.5" opacity="0.7"/>
+          </svg>
+        </div>
+
+        <!-- Family -->
+        <div class="symbol-item fade-in">
+          <svg width="120" height="120" viewBox="0 0 120 120" aria-hidden="true">
+            <circle cx="60" cy="40" r="15" fill="none" stroke="var(--color-accent)" stroke-width="1.5"/>
+            <circle cx="40" cy="70" r="12" fill="none" stroke="var(--color-accent)" stroke-width="1.5" opacity="0.8"/>
+            <circle cx="80" cy="70" r="12" fill="none" stroke="var(--color-accent)" stroke-width="1.5" opacity="0.8"/>
+          </svg>
+        </div>
+
+        <!-- Community -->
+        <div class="symbol-item fade-in">
+          <svg width="120" height="120" viewBox="0 0 120 120" aria-hidden="true">
+            <circle cx="60" cy="60" r="15" fill="none" stroke="var(--color-accent)" stroke-width="1.5"/>
+            <circle cx="60" cy="30" r="10" fill="none" stroke="var(--color-accent)" stroke-width="1.5" opacity="0.7"/>
+            <circle cx="85" cy="60" r="10" fill="none" stroke="var(--color-accent)" stroke-width="1.5" opacity="0.7"/>
+            <circle cx="60" cy="90" r="10" fill="none" stroke="var(--color-accent)" stroke-width="1.5" opacity="0.7"/>
+            <circle cx="35" cy="60" r="10" fill="none" stroke="var(--color-accent)" stroke-width="1.5" opacity="0.7"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: VÝZVA — Email Waitlist -->
+  <section class="section section-cta" aria-label="Join Waitlist">
+    <div class="container">
+      <div class="cta-content fade-in">
+        <h2 class="cta-heading" data-i18n="cta">Následujte náš kompas.</h2>
+
+        <form id="waitlist-form" class="waitlist-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div class="form-group">
+            <input
+              type="email"
+              name="email"
+              id="email"
+              required
+              data-i18n-placeholder="placeholder"
+              placeholder="váš@email.cz"
+              aria-label="Email address"
+              autocomplete="email"
+            />
+            <button type="submit" class="btn-submit" aria-label="Submit email">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </div>
+
+          <p class="form-note" data-i18n="note">Žádný spam. Jen směr.</p>
+
+          <div class="form-message" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: STAV — Mikrotext -->
+  <section class="section section-status" aria-label="Status">
+    <div class="container">
+      <div class="status-content">
+        <p class="status-text">
+          <span class="status-dot" aria-hidden="true">•</span>
+          <span data-i18n="status">Téměř připraveni</span>
+          <span class="status-dot" aria-hidden="true">•</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: ZÁPATÍ — Existence -->
+  <footer class="section section-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-content">
+        <!-- Theme & Language Toggles -->
+        <div class="footer-toggles">
+          <!-- Theme Toggle -->
+          <button id="theme-toggle" class="toggle-btn" aria-label="Toggle dark/light mode">
+            <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+
+          <!-- Language Toggle -->
+          <div id="lang-toggle" class="lang-toggle" role="radiogroup" aria-label="Language selection">
+            <button class="lang-btn active" data-lang="cz" role="radio" aria-checked="true">CZ</button>
+            <span class="lang-divider">|</span>
+            <button class="lang-btn" data-lang="en" role="radio" aria-checked="false">EN</button>
+          </div>
+        </div>
+
+        <!-- Social Icons -->
+        <div class="footer-social">
+          <a href="https://instagram.com/motivus.cz" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="https://facebook.com/motivus.cz" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Copyright -->
+        <div class="footer-copyright">
+          <p data-i18n="copyright">© 2025 MOTIVUS</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/utils.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/form.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

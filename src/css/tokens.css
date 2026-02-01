@@ -1,0 +1,67 @@
+/*
+  Design Tokens
+  Based on MOTIVUS Teaser PRD v3.0
+*/
+
+:root {
+  /* Colors - Light Mode */
+  --color-bg: #FAF9F7;           /* teplá bílá, jako papír */
+  --color-text: #2D2A26;         /* zemitá čerň */
+  --color-text-muted: #6B6560;   /* tlumená šedá */
+  --color-accent: #8B7355;       /* teplá hnědá, kompas */
+  --color-border: #E5E2DD;       /* jemná linka */
+
+  /* Typography */
+  --font-heading: 'Inter', 'SF Pro Display', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', 'SF Pro Text', system-ui, -apple-system, sans-serif;
+
+  /* Fluid Typography */
+  --size-hero: clamp(3rem, 8vw, 6rem);
+  --size-subheading: clamp(1.25rem, 3vw, 1.75rem);
+  --size-body: clamp(1rem, 2vw, 1.125rem);
+  --size-small: clamp(0.75rem, 1.5vw, 0.875rem);
+
+  /* Font Weights */
+  --weight-light: 300;
+  --weight-normal: 400;
+  --weight-medium: 500;
+
+  /* Line Heights */
+  --line-height-tight: 1.1;
+  --line-height-normal: 1.6;
+
+  /* Letter Spacing */
+  --letter-spacing-wide: 0.05em;
+
+  /* Spacing */
+  --space-xs: 0.5rem;      /* 8px */
+  --space-sm: 1rem;        /* 16px */
+  --space-md: 2rem;        /* 32px */
+  --space-lg: 4rem;        /* 64px */
+  --space-xl: 8rem;        /* 128px */
+  --space-2xl: 12rem;      /* 192px */
+
+  /* Vertical Rhythm */
+  --section-gap: clamp(6rem, 15vh, 12rem);
+
+  /* Animation Easing */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Animation Durations */
+  --duration-fast: 200ms;
+  --duration-normal: 400ms;
+  --duration-slow: 800ms;
+  --duration-breathing: 4000ms;
+
+  /* Borders */
+  --border-radius: 4px;
+}
+
+/* Dark Mode */
+:root.dark-mode {
+  --color-bg: #1A1918;           /* hluboká tma */
+  --color-text: #E8E4DF;         /* měkká bílá */
+  --color-text-muted: #9B9590;   /* tlumená šedá dark */
+  --color-accent: #C4A77D;       /* zlatavá */
+  --color-border: #3A3835;       /* jemná linka dark */
+}

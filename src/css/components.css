@@ -1,0 +1,218 @@
+/*
+  Components
+  Form, buttons, toggles, UI elements
+*/
+
+/* Waitlist Form */
+.waitlist-form {
+  width: 100%;
+  max-width: 500px;
+}
+
+.form-group {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+  width: 100%;
+}
+
+.form-group input[type="email"] {
+  flex: 1;
+  padding: var(--space-sm) 0;
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text);
+  font-size: var(--size-body);
+  transition: border-color var(--duration-normal) ease;
+}
+
+.form-group input[type="email"]::placeholder {
+  color: var(--color-text-muted);
+  opacity: 0.6;
+}
+
+.form-group input[type="email"]:focus {
+  outline: none;
+  border-bottom-color: var(--color-accent);
+}
+
+.form-group input[type="email"]:invalid:not(:placeholder-shown) {
+  border-bottom-color: #D64545;
+}
+
+/* Submit Button */
+.btn-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-accent);
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-out-expo);
+  flex-shrink: 0;
+}
+
+.btn-submit:hover:not(:disabled),
+.btn-submit:focus:not(:disabled) {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  transform: scale(1.05);
+}
+
+.btn-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-submit.loading svg {
+  animation: rotate 1s linear infinite;
+}
+
+/* Form Note */
+.form-note {
+  font-size: var(--size-small);
+  color: var(--color-text-muted);
+  opacity: 0.7;
+  margin-top: var(--space-sm);
+}
+
+/* Form Messages */
+.form-message {
+  font-size: var(--size-small);
+  padding: var(--space-sm);
+  border-radius: var(--border-radius);
+  margin-top: var(--space-sm);
+  opacity: 0;
+  transition: opacity var(--duration-normal) ease;
+}
+
+.form-message.success {
+  color: var(--color-accent);
+  background: rgba(139, 115, 85, 0.1);
+  opacity: 1;
+}
+
+.form-message.error {
+  color: #D64545;
+  background: rgba(214, 69, 69, 0.1);
+  opacity: 1;
+}
+
+/* Theme Toggle */
+#theme-toggle {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background var(--duration-normal) ease;
+}
+
+#theme-toggle:hover,
+#theme-toggle:focus {
+  background: rgba(139, 115, 85, 0.1);
+}
+
+#theme-toggle svg {
+  position: absolute;
+  transition: opacity var(--duration-normal) ease,
+              transform var(--duration-normal) var(--ease-out-expo);
+}
+
+#theme-toggle .icon-sun {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+#theme-toggle .icon-moon {
+  opacity: 0;
+  transform: rotate(180deg);
+}
+
+:root.dark-mode #theme-toggle .icon-sun {
+  opacity: 0;
+  transform: rotate(-180deg);
+}
+
+:root.dark-mode #theme-toggle .icon-moon {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+/* Language Toggle */
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.lang-btn {
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--size-small);
+  color: var(--color-text-muted);
+  opacity: 0.5;
+  transition: opacity var(--duration-normal) ease, color var(--duration-normal) ease;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lang-btn:hover,
+.lang-btn:focus {
+  opacity: 0.8;
+}
+
+.lang-btn.active {
+  color: var(--color-text);
+  opacity: 1;
+  font-weight: var(--weight-medium);
+}
+
+.lang-divider {
+  color: var(--color-text-muted);
+  opacity: 0.3;
+}
+
+/* Toggle Button General */
+.toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text);
+  opacity: 0.5;
+  transition: opacity var(--duration-normal) ease;
+}
+
+.toggle-btn:hover,
+.toggle-btn:focus {
+  opacity: 1;
+}
+
+/* Animations */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
