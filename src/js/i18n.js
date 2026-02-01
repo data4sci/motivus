@@ -77,6 +77,11 @@ class I18nManager {
 
     // Update toggle UI
     this.updateToggle();
+
+    // Dispatch event for other modules (e.g., countdown)
+    document.dispatchEvent(new CustomEvent('languageChanged', {
+      detail: { lang: this.currentLang }
+    }));
   }
 
   updateToggle() {

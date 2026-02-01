@@ -15,6 +15,7 @@ Tato stránka je tichým přivítáním — první kontakt s projektem, který n
 - **Minimalistický design**: Čistý, klidný vizuál s důrazem na prostor a ticho
 - **Dark/Light mode**: Plynulé přepínání s podporou system preference
 - **Bilingual**: Česká a anglická mutace (CZ/EN)
+- **Countdown timer**: Dynamický odpočet k launch datu (bez urgency)
 - **Email waitlist**: Jednoduchý formulář pro early access
 - **Accessible**: WCAG 2.1 AA compliant, keyboard navigation, screen reader friendly
 - **Performant**: < 200KB, FCP < 1s, Lighthouse score > 95
@@ -46,6 +47,7 @@ src/
 │   ├── theme.js            # Dark/light mode
 │   ├── i18n.js             # Language switching
 │   ├── animations.js       # Scroll & breathing animations
+│   ├── countdown.js        # Launch countdown timer
 │   ├── form.js             # Email form handling
 │   └── utils.js            # Utilities
 ├── data/

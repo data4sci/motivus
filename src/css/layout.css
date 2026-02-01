@@ -64,6 +64,13 @@
   color: var(--color-text);
 }
 
+.countdown-line {
+  font-size: var(--size-body);
+  font-weight: var(--weight-medium);
+  color: var(--color-accent);
+  margin: var(--space-md) 0;
+}
+
 .tension-line-2 {
   font-size: var(--size-body);
   color: var(--color-text-muted);
@@ -141,6 +148,11 @@
 .status-dot {
   opacity: 0.5;
   animation: pulse 2s ease-in-out infinite;
+}
+
+.countdown-text {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 
 /* FOOTER */
