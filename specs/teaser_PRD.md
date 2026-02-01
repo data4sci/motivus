@@ -8,8 +8,11 @@
 
 > Motivus nevolá. Motivus čeká.
 > Nevytváříme produkty. Vytváříme prostor.
+> Kompas nekřičí. Kompas šeptá.
 
 Tato stránka je **prázdný nádech před prvním krokem**. Návštěvník má pocítit, že přišel na místo, které nespěchá, nemanipuluje, nekřičí. Místo, které prostě *je* — a čeká.
+
+**Klíčový princip:** Zvědavost nevzniká tlakem. Vzniká nedořečením a pocitem, že jsem byl pochopen. Nezrcadlíme, co má člověk dělat — zrcadlíme, co možná cítí.
 
 ---
 
@@ -48,37 +51,45 @@ Při tvorbě stránky vycházej z těchto principů:
 Návštěvník by měl:
 
 1. **Zpomalit** — design vyvolává klid, ne akci
-2. **Pocítit zvědavost** — ne strach z promeškání
-3. **Cítit se viděn** — ne jako cíl, ale jako člověk
-4. **Odejít s otázkou** — "Co je to za místo?"
+2. **Pocítit zvědavost** — z nedořečení, ne z tlaku
+3. **Cítit se viděn** — "Tohle někdo napsal o mně."
+4. **Odejít s otázkou** — "Co je to za místo? A kam vlastně jdu?"
 
 ---
 
 ## STRUKTURA STRÁNKY
 
-### 1. HERO — Zastavení
+### 1. HERO — Tiché přivítání
 
 ```
 ┌─────────────────────────────────────┐
 │                                     │
 │              [symbol]               │
 │                                     │
-│               STOP.                 │
 │                                     │
-│        Před restartem života.       │
+│         Než uděláte další krok.     │
+│                                     │
 │                                     │
 └─────────────────────────────────────┘
 ```
 
 **Instrukce pro AI:**
 
-- H1: "STOP." — zobrazit s váhou, může být animovaná pauza před zobrazením
-- Podnadpis přichází až po tichu (delay 1.5s nebo scroll-triggered)
+- Žádný imperativ, žádný rozkaz
+- Text přichází až po tichu — nejdřív prostor, pak slova
 - Symbol kruhu: jednoduchý, dýchající (scale 0.98–1.02, period 4s)
-- Negativní prostor je součástí sdělení — minimum je maximum
+- Negativní prostor je součástí sdělení — nech vizuál mluvit první
+- Může být i varianta bez textu v HERO — jen symbol a scroll hint
 
-**CZ:** STOP. / Před restartem života.
-**EN:** STOP. / Before you restart.
+**CZ:** Než uděláte další krok.
+**EN:** Before you take the next step.
+
+**Alternativy (zrcadlení, ne velení):**
+
+- "Možná je čas se zastavit."
+- "Víte, že takhle to dál nechcete."
+- "Někde to začíná."
+- "Tady."
 
 ---
 
@@ -291,6 +302,7 @@ A space for people seeking real direction, not another manual.
 - Breathing animation na symbolu (scale oscillation)
 - Smooth scroll behavior
 - Theme transition (300ms)
+- Countdown timer
 
 ### Zakázáno ✗
 
@@ -300,7 +312,6 @@ A space for people seeking real direction, not another manual.
 - Zvukové efekty
 - Pop-upy a modály
 - Více než jeden CTA
-- Countdown timery
 - "Už jen X míst" urgency
 
 ---
@@ -312,7 +323,7 @@ A space for people seeking real direction, not another manual.
 - Statický HTML/CSS nebo lehký framework (Astro, 11ty)
 - Vanilla JS nebo Alpine.js pro interakce
 - Formspree / Netlify Forms pro email capture
-- Deployed on Vercel / Netlify
+- Deployed on GitHub Pages (Actions)
 
 ### Performance
 
@@ -337,26 +348,34 @@ A space for people seeking real direction, not another manual.
 
 ## KOPÍROVACÍ BANKA
 
-### Alternativní H1
+### Alternativní hlavní texty (zrcadlení, ne velení)
 
-- "STOP."
-- "Zastavte."
-- "Moment."
+**Otevírající otázku:**
+
+- "Než uděláte další krok."
+- "Možná je čas se zastavit."
+- "Než to znovu rozjedete."
+
+**Zrcadlení vnitřního stavu:**
+
+- "Něco vám už delší dobu nesedí."
+- "Víte, že takhle to dál nechcete."
+- "Možná nehledáte víc informací, ale směr."
+
+**Minimalistické (symbol nese váhu):**
+
 - "Tady."
+- "Teď."
+- "Ještě chvíli."
+- (nebo žádný text — jen symbol a prostor)
 
-### Alternativní podnadpisy
-
-- "Před restartem života."
-- "Než půjdete dál."
-- "Někde začít musíte."
-- "Pravda začíná tichem."
-
-### Alternativní teaser texty
+### Alternativní teaser texty (pokračování)
 
 - "Místo pro ty, kdo už nechtějí předstírat."
 - "Pro lidi hledající klid, ne odpovědi."
 - "Prostor pro znovuspojení se sebou."
 - "Ne další program. Skutečný prostor."
+- "Podívej se, kam vlastně jdeš."
 
 ### Mikrokopie pro formy
 
@@ -395,5 +414,5 @@ Inspirace (ne kopie):
 
 ---
 
-*Verze dokumentu: v3.0 (AI Design Brief)*
-*Aktualizováno: 2025*
+*Verze dokumentu: v4.0 (AI Design Brief)*
+*Aktualizováno: 2/2026*
