@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Místo pro lidi, kteří hledají skutečný směr, ne další návod.">
   <meta name="author" content="MOTIVUS z.s.">
+  <meta name="theme-color" content="#FAF9F7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1A1918" media="(prefers-color-scheme: dark)">
 
   <!-- Open Graph / Social Media -->
   <meta property="og:title" content="MOTIVUS — Než uděláte další krok">
@@ -16,7 +18,21 @@
   <title>MOTIVUS — Než uděláte další krok</title>
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="../media/logo.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+  <!-- Prevent theme flash -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('motivus-theme');
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (saved === 'dark' || (!saved && prefersDark)) {
+          document.documentElement.classList.add('dark-mode');
+        }
+      } catch (e) {}
+    })();
+  </script>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,6 +50,9 @@
 </head>
 <body>
 
+  <a class="skip-link" href="#main" data-i18n="skip">Přejít na obsah</a>
+
+  <main id="main">
   <!-- SECTION 1: HERO — Tiché přivítání -->
   <section class="section section-hero" aria-label="Hero">
     <div class="container">
@@ -125,10 +144,12 @@
               required
               data-i18n-placeholder="placeholder"
               placeholder="váš@email.cz"
+              data-i18n-aria-label="emailLabel"
               aria-label="Email address"
               autocomplete="email"
+              inputmode="email"
             />
-            <button type="submit" class="btn-submit" aria-label="Submit email">
+            <button type="submit" class="btn-submit" data-i18n-aria-label="submitEmail" aria-label="Submit email">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
@@ -156,6 +177,7 @@
       </div>
     </div>
   </section>
+  </main>
 
   <!-- SECTION 6: ZÁPATÍ — Existence -->
   <footer class="section section-footer" role="contentinfo">
@@ -164,7 +186,7 @@
         <!-- Theme & Language Toggles -->
         <div class="footer-toggles">
           <!-- Theme Toggle -->
-          <button id="theme-toggle" class="toggle-btn" aria-label="Toggle dark/light mode">
+          <button id="theme-toggle" class="toggle-btn" type="button" aria-label="Toggle dark/light mode">
             <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="5"></circle>
               <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -183,9 +205,9 @@
 
           <!-- Language Toggle -->
           <div id="lang-toggle" class="lang-toggle" role="radiogroup" aria-label="Language selection">
-            <button class="lang-btn active" data-lang="cz" role="radio" aria-checked="true">CZ</button>
+            <button class="lang-btn active" type="button" data-lang="cz" role="radio" aria-checked="true">CZ</button>
             <span class="lang-divider">|</span>
-            <button class="lang-btn" data-lang="en" role="radio" aria-checked="false">EN</button>
+            <button class="lang-btn" type="button" data-lang="en" role="radio" aria-checked="false">EN</button>
           </div>
         </div>
 
@@ -207,7 +229,7 @@
 
         <!-- Copyright -->
         <div class="footer-copyright">
-          <p data-i18n="copyright">© 2025 MOTIVUS</p>
+          <p data-i18n="copyright">© 2026 MOTIVUS</p>
         </div>
       </div>
     </div>

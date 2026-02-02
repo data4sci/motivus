@@ -8,13 +8,14 @@ class ThemeManager {
     this.root = document.documentElement;
     this.toggle = document.getElementById('theme-toggle');
     this.storageKey = 'motivus-theme';
+    this.mql = window.matchMedia('(prefers-color-scheme: dark)');
     this.init();
   }
 
   init() {
     // Check localStorage, then system preference
-    const saved = localStorage.getItem(this.storageKey);
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const saved = Utils.safeStorageGet(this.storageKey);
+    const prefersDark = this.mql.matches;
 
     if (saved === 'dark' || (!saved && prefersDark)) {
       this.setDark(false);
@@ -28,12 +29,14 @@ class ThemeManager {
     }
 
     // Listen for system preference changes
-    window.matchMedia('(prefers-color-scheme: dark)')
-      .addEventListener('change', (e) => {
-        if (!localStorage.getItem(this.storageKey)) {
-          e.matches ? this.setDark(false) : this.setLight(false);
-        }
-      });
+    Utils.onMediaQueryChange(this.mql, (e) => {
+      if (!Utils.safeStorageGet(this.storageKey)) {
+        e.matches ? this.setDark(false) : this.setLight(false);
+      }
+    });
+
+    // Update labels when language changes
+    document.addEventListener('languageChanged', () => this.updateAriaLabel());
   }
 
   toggleTheme() {
@@ -44,25 +47,27 @@ class ThemeManager {
   setDark(save = true) {
     this.root.classList.add('dark-mode');
     if (save) {
-      localStorage.setItem(this.storageKey, 'dark');
+      Utils.safeStorageSet(this.storageKey, 'dark');
     }
-    this.updateAriaLabel('dark');
+    this.updateAriaLabel();
   }
 
   setLight(save = true) {
     this.root.classList.remove('dark-mode');
     if (save) {
-      localStorage.setItem(this.storageKey, 'light');
+      Utils.safeStorageSet(this.storageKey, 'light');
     }
-    this.updateAriaLabel('light');
+    this.updateAriaLabel();
   }
 
-  updateAriaLabel(mode) {
+  updateAriaLabel() {
     if (this.toggle) {
-      const label = mode === 'dark'
-        ? 'Switch to light mode'
-        : 'Switch to dark mode';
+      const isDark = this.root.classList.contains('dark-mode');
+      const key = isDark ? 'switchToLight' : 'switchToDark';
+      const fallback = isDark ? 'Switch to light mode' : 'Switch to dark mode';
+      const label = window.i18n?.t(key) || fallback;
       this.toggle.setAttribute('aria-label', label);
+      this.toggle.setAttribute('aria-pressed', isDark ? 'true' : 'false');
     }
   }
 }

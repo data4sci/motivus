@@ -16,10 +16,13 @@ class I18nManager {
     try {
       // Load content
       const response = await fetch('./data/content.json');
+      if (!response.ok) {
+        throw new Error(`Failed to load content.json: ${response.status}`);
+      }
       this.content = await response.json();
 
       // Load saved or browser preference
-      const saved = localStorage.getItem(this.storageKey);
+      const saved = Utils.safeStorageGet(this.storageKey);
       const browserLang = Utils.getBrowserLanguage();
       this.currentLang = saved || browserLang;
 
@@ -37,13 +40,14 @@ class I18nManager {
       console.error('Failed to load translations:', error);
       // Fallback to default (CZ) if loading fails
       this.currentLang = 'cz';
+      this.apply();
     }
   }
 
   setLanguage(lang) {
     if (lang !== this.currentLang && (lang === 'cz' || lang === 'en')) {
       this.currentLang = lang;
-      localStorage.setItem(this.storageKey, lang);
+      Utils.safeStorageSet(this.storageKey, lang);
       this.apply();
     }
   }
@@ -64,6 +68,15 @@ class I18nManager {
       const key = input.getAttribute('data-i18n-placeholder');
       if (this.content[this.currentLang] && this.content[this.currentLang][key]) {
         input.placeholder = this.content[this.currentLang][key];
+      }
+    });
+
+    // Update aria-label attributes
+    const ariaLabelEls = document.querySelectorAll('[data-i18n-aria-label]');
+    ariaLabelEls.forEach(el => {
+      const key = el.getAttribute('data-i18n-aria-label');
+      if (this.content[this.currentLang] && this.content[this.currentLang][key]) {
+        el.setAttribute('aria-label', this.content[this.currentLang][key]);
       }
     });
 

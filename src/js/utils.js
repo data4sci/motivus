@@ -5,6 +5,29 @@
 
 const Utils = {
   /**
+   * Safely read from localStorage (may throw in some environments)
+   */
+  safeStorageGet(key) {
+    try {
+      return window.localStorage.getItem(key);
+    } catch {
+      return null;
+    }
+  },
+
+  /**
+   * Safely write to localStorage (may throw in some environments)
+   */
+  safeStorageSet(key, value) {
+    try {
+      window.localStorage.setItem(key, value);
+      return true;
+    } catch {
+      return false;
+    }
+  },
+
+  /**
    * Check if user prefers reduced motion
    */
   prefersReducedMotion() {
@@ -16,6 +39,22 @@ const Utils = {
    */
   supportsIntersectionObserver() {
     return 'IntersectionObserver' in window;
+  },
+
+  /**
+   * Subscribe to MediaQueryList changes with broad browser support
+   */
+  onMediaQueryChange(mediaQueryList, handler) {
+    if (!mediaQueryList) return;
+    if (typeof mediaQueryList.addEventListener === 'function') {
+      mediaQueryList.addEventListener('change', handler);
+      return () => mediaQueryList.removeEventListener('change', handler);
+    }
+    if (typeof mediaQueryList.addListener === 'function') {
+      mediaQueryList.addListener(handler);
+      return () => mediaQueryList.removeListener(handler);
+    }
+    return () => {};
   },
 
   /**

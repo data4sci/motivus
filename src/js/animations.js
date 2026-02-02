@@ -39,8 +39,7 @@ class AnimationsManager {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          // Optionally unobserve after animation to improve performance
-          // observer.unobserve(entry.target);
+          observer.unobserve(entry.target);
         }
       });
     }, {

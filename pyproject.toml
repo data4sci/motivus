@@ -1,7 +1,7 @@
 [project]
 name = "motivus"
 version = "0.1.0"
-description = "Add your description here"
+description = "Static teaser landing page for MOTIVUS z.s."
 readme = "README.md"
-requires-python = ">=3.14"
+requires-python = ">=3.10"
 dependencies = []

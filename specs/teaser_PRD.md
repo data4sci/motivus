@@ -213,7 +213,7 @@ A space for people seeking real direction, not another manual.
 │                                     │
 │        [ig]    [fb]                 │
 │                                     │
-│         © 2025 MOTIVUS              │
+│         © 2026 MOTIVUS              │
 └─────────────────────────────────────┘
 ```
 

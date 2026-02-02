@@ -11,6 +11,7 @@ class FormManager {
     this.message = this.form.querySelector('.form-message');
     this.button = this.form.querySelector('button[type="submit"]');
     this.input = this.form.querySelector('input[type="email"]');
+    this.actionUrl = this.form.getAttribute('action') || '';
     this.init();
   }
 
@@ -20,6 +21,12 @@ class FormManager {
 
   async handleSubmit(e) {
     e.preventDefault();
+
+    // Prevent confusing failures when Formspree is not configured
+    if (!this.actionUrl || this.actionUrl.includes('YOUR_FORM_ID')) {
+      this.showError(window.i18n?.t('formNotConfigured') || 'Form is not configured yet.');
+      return;
+    }
 
     // Basic email validation
     if (!this.input.validity.valid) {
@@ -32,7 +39,7 @@ class FormManager {
     this.clearMessage();
 
     try {
-      const response = await fetch(this.form.action, {
+      const response = await fetch(this.actionUrl, {
         method: 'POST',
         body: formData,
         headers: {
@@ -44,12 +51,19 @@ class FormManager {
         this.showSuccess();
         this.form.reset();
       } else {
-        const data = await response.json();
-        if (data.errors) {
-          this.showError(data.errors.map(error => error.message).join(', '));
-        } else {
-          this.showError(window.i18n?.t('error') || 'Něco se nepovedlo. Zkuste to znovu.');
+        let data = null;
+        try {
+          data = await response.json();
+        } catch {
+          data = null;
         }
+
+        if (data?.errors) {
+          this.showError(data.errors.map(error => error.message).join(', '));
+          return;
+        }
+
+        this.showError(window.i18n?.t('error') || 'Něco se nepovedlo. Zkuste to znovu.');
       }
     } catch (error) {
       console.error('Form submission error:', error);

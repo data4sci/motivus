@@ -41,6 +41,12 @@ yarn-error.log*
 *.tmp
 .cache/
 
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
 # Testing
 coverage/
 .nyc_output/

@@ -19,6 +19,32 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Help user agents render form controls appropriately in both themes */
+:root {
+  color-scheme: light dark;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 1000;
+  padding: 0.5rem 0.75rem;
+  border-radius: 999px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity var(--duration-fast) ease, transform var(--duration-fast) ease;
+}
+
+.skip-link:focus {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);

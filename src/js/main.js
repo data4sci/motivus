@@ -10,17 +10,11 @@
    * Application initialization
    */
   function init() {
-    // Log initialization (remove in production)
-    console.log('MOTIVUS initialized');
-
     // All modules are initialized in their respective files via DOMContentLoaded
     // This file serves as a coordination point for any cross-module communication
 
     // Smooth scroll polyfill for older browsers
     initSmoothScroll();
-
-    // Add any global event listeners
-    initGlobalListeners();
   }
 
   /**
@@ -43,29 +37,6 @@
           });
         }
       });
-    });
-  }
-
-  /**
-   * Initialize global event listeners
-   */
-  function initGlobalListeners() {
-    // Log visibility changes (optional, for analytics)
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) {
-        console.log('Page hidden');
-      } else {
-        console.log('Page visible');
-      }
-    });
-
-    // Handle network status changes
-    window.addEventListener('online', () => {
-      console.log('Connection restored');
-    });
-
-    window.addEventListener('offline', () => {
-      console.log('Connection lost');
     });
   }
 

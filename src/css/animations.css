@@ -49,10 +49,6 @@
 }
 
 /* Smooth Transitions */
-* {
-  transition-property: none;
-}
-
 a,
 button,
 input,

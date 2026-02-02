@@ -1,28 +1,40 @@
 {
   "cz": {
     "pageTitle": "MOTIVUS — Než uděláte další krok",
+    "skip": "Přejít na obsah",
     "hero": "Než uděláte další krok.",
     "tension1": "Něco se chystá.",
     "tension2": "Místo pro lidi, kteří hledají skutečný směr, ne další návod.",
     "cta": "Následujte náš kompas.",
     "placeholder": "váš@email.cz",
+    "emailLabel": "Emailová adresa",
+    "submitEmail": "Odeslat email",
     "note": "Žádný spam. Jen směr.",
     "success": "Díky. Ozveme se, až bude čas.",
     "error": "Něco se nepovedlo. Zkuste to znovu.",
+    "formNotConfigured": "Formulář zatím není nastaven.",
+    "switchToLight": "Přepnout na světlý režim",
+    "switchToDark": "Přepnout na tmavý režim",
     "status": "Téměř připraveni",
-    "copyright": "© 2025 MOTIVUS"
+    "copyright": "© 2026 MOTIVUS"
   },
   "en": {
     "pageTitle": "MOTIVUS — Before you take the next step",
+    "skip": "Skip to content",
     "hero": "Before you take the next step.",
     "tension1": "Something is coming.",
     "tension2": "A space for people seeking real direction, not another manual.",
     "cta": "Follow our compass.",
     "placeholder": "your@email.com",
+    "emailLabel": "Email address",
+    "submitEmail": "Submit email",
     "note": "No spam. Just direction.",
     "success": "Thank you. We'll reach out when the time comes.",
     "error": "Something went wrong. Please try again.",
+    "formNotConfigured": "Form is not configured yet.",
+    "switchToLight": "Switch to light mode",
+    "switchToDark": "Switch to dark mode",
     "status": "Almost ready",
-    "copyright": "© 2025 MOTIVUS"
+    "copyright": "© 2026 MOTIVUS"
   }
 }

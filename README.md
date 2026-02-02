@@ -59,12 +59,14 @@ src/
 ## Local Development
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/YOUR_USERNAME/motivus.git
 cd motivus
 ```
 
-2. Serve the `src/` directory with a local server:
+1. Serve the `src/` directory with a local server:
+
 ```bash
 # Using Python
 python3 -m http.server 8000 --directory src
@@ -76,7 +78,12 @@ npx serve src
 # Right-click index.html → Open with Live Server
 ```
 
-3. Open browser at `http://localhost:8000`
+1. Open browser at `http://localhost:8000`
+
+## Configuration
+
+- **Waitlist form**: replace `YOUR_FORM_ID` in `src/index.html` with your Formspree form id.
+- **Favicon**: `src/assets/favicon.png` and `src/assets/apple-touch-icon.png` are generated from `media/logo.png`.
 
 ## Deployment
 
@@ -134,7 +141,7 @@ This page embodies the core values of MOTIVUS:
 
 ## License
 
-© 2025 MOTIVUS z.s. All rights reserved.
+© 2026 MOTIVUS z.s. All rights reserved.
 
 ## Contact
 
