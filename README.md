@@ -12,6 +12,7 @@ Tato stránka je tichým přivítáním — první kontakt s projektem, který n
 
 ## Features
 
+- **Animated canvas background**: Physics-based graph visualization with spring forces, Brownian motion, and mouse interaction
 - **Minimalistický design**: Čistý, klidný vizuál s důrazem na prostor a ticho
 - **Dark/Light mode**: Plynulé přepínání s podporou system preference
 - **Bilingual**: Česká a anglická mutace (CZ/EN)
@@ -32,7 +33,7 @@ Tato stránka je tichým přivítáním — první kontakt s projektem, který n
 
 ## Project Structure
 
-```
+```plaintext
 src/
 ├── index.html              # Main page
 ├── css/
@@ -46,6 +47,7 @@ src/
 │   ├── main.js             # App initialization
 │   ├── theme.js            # Dark/light mode
 │   ├── i18n.js             # Language switching
+│   ├── canvas-background.js # Animated graph background
 │   ├── animations.js       # Scroll & breathing animations
 │   ├── countdown.js        # Launch countdown timer
 │   ├── form.js             # Email form handling
@@ -126,6 +128,7 @@ The site is automatically deployed to GitHub Pages when pushing to the `main` br
 ## Documentation
 
 - [Teaser PRD](specs/teaser_PRD.md) - Complete design brief
+- [Vizuální manuál](specs/vizualni_manual.md) - Visual design guidelines
 - [Manifest](specs/manifest.md) - Project mission statement
 - [Hodnoty](specs/hodnoty.md) - Core values
 - [Stanovy](specs/stanovy.md) - Organizational bylaws
