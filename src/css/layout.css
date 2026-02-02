@@ -233,3 +233,21 @@
     width: 100%;
   }
 }
+
+/* Canvas Background Layers */
+.canvas-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Allow clicks to pass through */
+}
+
+#canvas-layer-1 {
+  z-index: -2; /* Further back */
+}
+
+#canvas-layer-2 {
+  z-index: -1; /* Slightly forward */
+}
