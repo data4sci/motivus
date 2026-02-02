@@ -27,16 +27,16 @@ class CanvasBackgroundManager {
     this.performanceDegradation = false;
     this.glowEnabled = true;
 
-    // Viewport breakpoints
+    // Viewport breakpoints - very minimal for calm background
     this.breakpoints = {
-      small: { max: 768, count: 12 },
-      medium: { min: 768, max: 1440, count: 24 },
-      large: { min: 1440, count: 40 }
+      small: { max: 768, count: 2 },
+      medium: { min: 768, max: 1440, count: 4 },
+      large: { min: 1440, count: 6 }
     };
 
-    // Interaction radii
-    this.attractionRadius = 250;
-    this.highlightRadius = 150;
+    // Interaction radii - larger and more subtle
+    this.attractionRadius = 300;
+    this.highlightRadius = 200;
 
     // Store listeners for cleanup
     this.listeners = {};
@@ -201,16 +201,19 @@ class CanvasBackgroundManager {
       id: `${Date.now()}-${Math.random()}`,
       x: Math.random() * width,
       y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.6, // -0.3 to 0.3
-      vy: (Math.random() - 0.5) * 0.6,
+      vx: (Math.random() - 0.5) * 0.3, // -0.15 to 0.15 (slower initial velocity)
+      vy: (Math.random() - 0.5) * 0.3,
       mass: 1.0,
-      radius: 2
+      radius: 3,
+      baseRadius: 3,
+      pulsePhase: Math.random() * Math.PI * 2, // Random starting phase for morphing
+      pulseSpeed: 0.003 + Math.random() * 0.002 // Gentle pulsing (0.003-0.005)
     };
   }
 
   createEdge(nodeA, nodeB) {
     const restLength = this.distance(nodeA, nodeB);
-    const stiffness = 0.01 + Math.random() * 0.02; // 0.01-0.03
+    const stiffness = 0.005 + Math.random() * 0.01; // 0.005-0.015 (softer springs)
 
     return {
       nodeA,
@@ -232,9 +235,9 @@ class CanvasBackgroundManager {
         let fx = 0;
         let fy = 0;
 
-        // 1. Brownian motion (gentle drift)
-        fx += (Math.random() - 0.5) * 0.04;
-        fy += (Math.random() - 0.5) * 0.04;
+        // 1. Brownian motion (extremely gentle drift)
+        fx += (Math.random() - 0.5) * 0.01;
+        fy += (Math.random() - 0.5) * 0.01;
 
         // 2. Spring forces from edges
         graph.edges.forEach(edge => {
@@ -260,7 +263,7 @@ class CanvasBackgroundManager {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < this.attractionRadius && dist > 0) {
-            const strength = Math.pow(1 - dist / this.attractionRadius, 2) * 0.5;
+            const strength = Math.pow(1 - dist / this.attractionRadius, 2) * 0.08; // Very subtle magnetism
             fx += (dx / dist) * strength;
             fy += (dy / dist) * strength;
           }
@@ -270,9 +273,9 @@ class CanvasBackgroundManager {
         node.vx += fx;
         node.vy += fy;
 
-        // Apply damping
-        node.vx *= 0.98;
-        node.vy *= 0.98;
+        // Apply stronger damping for slower movement
+        node.vx *= 0.96;
+        node.vy *= 0.96;
 
         // Integrate velocity to position
         node.x += node.vx * deltaTime;
@@ -283,6 +286,10 @@ class CanvasBackgroundManager {
         if (node.x > width) node.x -= width;
         if (node.y < 0) node.y += height;
         if (node.y > height) node.y -= height;
+
+        // Self-morphing: slowly pulse node size
+        node.pulsePhase += node.pulseSpeed * deltaTime;
+        node.radius = node.baseRadius + Math.sin(node.pulsePhase) * 0.5; // Oscillate ±0.5px
       });
     });
   }
@@ -302,10 +309,10 @@ class CanvasBackgroundManager {
     // Get theme colors
     const colors = this.getThemeColors();
 
-    // Draw graphs on appropriate layers
+    // Draw graphs on appropriate layers with lower contrast
     this.graphs.forEach(graph => {
       const ctx = graph.layer === 1 ? this.ctx1 : this.ctx2;
-      const baseOpacity = graph.layer === 1 ? 0.08 : 0.15;
+      const baseOpacity = graph.layer === 1 ? 0.04 : 0.08;
 
       // Check for highlighted nodes (within highlight radius of mouse)
       const highlightedNodes = new Set();
@@ -318,10 +325,9 @@ class CanvasBackgroundManager {
         });
       }
 
-      // Draw edges
+      // Draw edges (never highlighted - only nodes respond to mouse)
       graph.edges.forEach(edge => {
-        const highlighted = highlightedNodes.has(edge.nodeA) || highlightedNodes.has(edge.nodeB);
-        this.drawEdge(edge, ctx, colors.graph, baseOpacity, highlighted);
+        this.drawEdge(edge, ctx, colors.graph, baseOpacity, false);
       });
 
       // Draw nodes
@@ -333,7 +339,7 @@ class CanvasBackgroundManager {
   }
 
   drawEdge(edge, ctx, color, baseOpacity, highlighted) {
-    const opacity = highlighted ? Math.min(baseOpacity + 0.4, 0.6) : baseOpacity;
+    const opacity = highlighted ? Math.min(baseOpacity + 0.15, 0.25) : baseOpacity;
 
     ctx.beginPath();
     ctx.moveTo(edge.nodeA.x, edge.nodeA.y);
@@ -345,18 +351,21 @@ class CanvasBackgroundManager {
   }
 
   drawNode(node, ctx, color, baseOpacity, highlighted) {
-    const opacity = highlighted ? Math.min(baseOpacity + 0.4, 0.6) : baseOpacity;
+    const opacity = highlighted ? Math.min(baseOpacity + 0.2, 0.35) : baseOpacity;
 
     ctx.beginPath();
     ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
     ctx.fillStyle = this.applyOpacity(color, opacity);
+
+    // Subtle glow effect for highlighted nodes
+    if (highlighted && this.glowEnabled) {
+      ctx.shadowBlur = 6;
+      ctx.shadowColor = this.applyOpacity(color, 0.3);
+    }
+
     ctx.fill();
 
-    // Optional: glow effect for highlighted nodes
-    if (highlighted && this.glowEnabled) {
-      ctx.shadowBlur = 8;
-      ctx.shadowColor = this.applyOpacity(color, 0.4);
-      ctx.fill();
+    if (highlighted) {
       ctx.shadowBlur = 0;
     }
   }

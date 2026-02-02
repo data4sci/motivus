@@ -8,6 +8,7 @@ html {
 }
 
 body {
+  position: relative; /* For absolute positioned canvas background */
   font-family: var(--font-body);
   font-size: var(--size-body);
   font-weight: var(--weight-normal);
