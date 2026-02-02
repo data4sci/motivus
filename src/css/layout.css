@@ -13,7 +13,6 @@
 
 /* Sections */
 .section {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,6 +24,7 @@
 
 /* HERO */
 .section-hero {
+  min-height: 70vh; /* Reduced from 90vh to reduce huge gap feeling */
   text-align: center;
 }
 
@@ -53,8 +53,10 @@
 
 .tension-content {
   max-width: 800px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
+  align-items: center; /* explicit centering of children */
   gap: var(--space-md);
 }
 
@@ -114,8 +116,10 @@
 
 .cta-content {
   max-width: 600px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
+  align-items: center; /* explicit centering of children */
   gap: var(--space-md);
   align-items: center;
 }
