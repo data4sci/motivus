@@ -27,11 +27,11 @@ class CanvasBackgroundManager {
     this.performanceDegradation = false;
     this.glowEnabled = true;
 
-    // Viewport breakpoints - very minimal for calm background
+    // Viewport breakpoints - minimal for calm background
     this.breakpoints = {
-      small: { max: 768, count: 2 },
-      medium: { min: 768, max: 1440, count: 4 },
-      large: { min: 1440, count: 6 }
+      small: { max: 768, count: 4 },
+      medium: { min: 768, max: 1440, count: 8 },
+      large: { min: 1440, count: 12 }
     };
 
     // Interaction radii - larger and more subtle
@@ -161,7 +161,7 @@ class CanvasBackgroundManager {
   }
 
   createGraph(layer) {
-    const nodeCount = this.randomInt(2, 6); // 2-6 nodes
+    const nodeCount = this.randomInt(2, 4); // 2-4 nodes (reduced)
     const nodes = [];
 
     // Create nodes with random positions
@@ -201,8 +201,8 @@ class CanvasBackgroundManager {
       id: `${Date.now()}-${Math.random()}`,
       x: Math.random() * width,
       y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.3, // -0.15 to 0.15 (slower initial velocity)
-      vy: (Math.random() - 0.5) * 0.3,
+      vx: (Math.random() - 0.5) * 0.575, // -0.2875 to 0.2875 (15% faster initial velocity)
+      vy: (Math.random() - 0.5) * 0.575,
       mass: 1.0,
       radius: 3,
       baseRadius: 3,
@@ -213,7 +213,7 @@ class CanvasBackgroundManager {
 
   createEdge(nodeA, nodeB) {
     const restLength = this.distance(nodeA, nodeB);
-    const stiffness = 0.005 + Math.random() * 0.01; // 0.005-0.015 (softer springs)
+    const stiffness = 0.002 + Math.random() * 0.004; // 0.002-0.006 (very soft springs)
 
     return {
       nodeA,
@@ -235,9 +235,9 @@ class CanvasBackgroundManager {
         let fx = 0;
         let fy = 0;
 
-        // 1. Brownian motion (extremely gentle drift)
-        fx += (Math.random() - 0.5) * 0.01;
-        fy += (Math.random() - 0.5) * 0.01;
+        // 1. Brownian motion (gentle autonomous drift for natural dynamics)
+        fx += (Math.random() - 0.5) * 0.046; // 15% faster
+        fy += (Math.random() - 0.5) * 0.046;
 
         // 2. Spring forces from edges
         graph.edges.forEach(edge => {
@@ -263,7 +263,7 @@ class CanvasBackgroundManager {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < this.attractionRadius && dist > 0) {
-            const strength = Math.pow(1 - dist / this.attractionRadius, 2) * 0.08; // Very subtle magnetism
+            const strength = Math.pow(1 - dist / this.attractionRadius, 2) * 0.03; // Extremely subtle magnetism
             fx += (dx / dist) * strength;
             fy += (dy / dist) * strength;
           }
@@ -273,9 +273,9 @@ class CanvasBackgroundManager {
         node.vx += fx;
         node.vy += fy;
 
-        // Apply stronger damping for slower movement
-        node.vx *= 0.96;
-        node.vy *= 0.96;
+        // Apply gentle damping to allow free movement
+        node.vx *= 0.99;
+        node.vy *= 0.99;
 
         // Integrate velocity to position
         node.x += node.vx * deltaTime;
@@ -287,9 +287,9 @@ class CanvasBackgroundManager {
         if (node.y < 0) node.y += height;
         if (node.y > height) node.y -= height;
 
-        // Self-morphing: slowly pulse node size
+        // Self-morphing: slowly pulse node size with more visible amplitude
         node.pulsePhase += node.pulseSpeed * deltaTime;
-        node.radius = node.baseRadius + Math.sin(node.pulsePhase) * 0.5; // Oscillate ±0.5px
+        node.radius = node.baseRadius + Math.sin(node.pulsePhase) * 1.0; // Oscillate ±1.0px
       });
     });
   }
@@ -457,8 +457,9 @@ class CanvasBackgroundManager {
   setupEventListeners() {
     // Mouse tracking (throttled to 16ms = 60fps)
     const throttledMouseMove = Utils.debounce((e) => {
+      // Adjust for scroll position since canvas is absolute
       this.mouse.x = e.clientX;
-      this.mouse.y = e.clientY;
+      this.mouse.y = e.clientY + window.scrollY;
       this.mouse.active = true;
     }, 16);
 
