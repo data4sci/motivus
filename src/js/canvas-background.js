@@ -193,6 +193,22 @@ class CanvasBackgroundManager {
       edges.push(this.createEdge(nodes[a], nodes[b]));
     }
 
+    // Ensure no orphan nodes - every node must have at least one edge
+    const nodesWithEdges = new Set();
+    edges.forEach(edge => {
+      nodesWithEdges.add(edge.nodeA);
+      nodesWithEdges.add(edge.nodeB);
+    });
+
+    // Connect orphan nodes to a random connected node
+    nodes.forEach((node, index) => {
+      if (!nodesWithEdges.has(node) && nodes.length > 1) {
+        // Find a random node that's not this one
+        const otherIndex = (index + 1 + Math.floor(Math.random() * (nodes.length - 1))) % nodes.length;
+        edges.push(this.createEdge(node, nodes[otherIndex]));
+      }
+    });
+
     return { nodes, edges, layer };
   }
 
@@ -239,7 +255,7 @@ class CanvasBackgroundManager {
         fx += (Math.random() - 0.5) * 0.046; // 15% faster
         fy += (Math.random() - 0.5) * 0.046;
 
-        // 2. Spring forces from edges
+        // 2. Spring forces from edges with adaptive rest length
         graph.edges.forEach(edge => {
           if (edge.nodeA === node || edge.nodeB === node) {
             const other = edge.nodeA === node ? edge.nodeB : edge.nodeA;
@@ -248,6 +264,10 @@ class CanvasBackgroundManager {
             const dist = Math.sqrt(dx * dx + dy * dy);
 
             if (dist > 0) {
+              // Allow rest length to slowly adapt to current distance (prevents glitches)
+              const targetRestLength = dist;
+              edge.restLength += (targetRestLength - edge.restLength) * 0.01; // Slowly adjust
+
               const displacement = dist - edge.restLength;
               const force = displacement * edge.stiffness;
               fx += (dx / dist) * force;
