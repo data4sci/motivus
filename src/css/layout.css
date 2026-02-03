@@ -266,7 +266,18 @@
   }
 
   .symbols-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center; /* Ensure items are centered in their cells */
+  }
+
+  .symbol-item:nth-child(1) {
+    grid-column: 1 / -1;
+    margin-bottom: var(--space-md);
+  }
+
+  .symbol-item:nth-child(1) svg {
+    width: 144px; /* 120px + 20% */
+    height: 144px;
   }
 }
 

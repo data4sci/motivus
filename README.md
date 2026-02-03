@@ -154,4 +154,4 @@ This page embodies the core values of MOTIVUS:
 
 ---
 
-*Než uděláte další krok.*
+*Něco se chystá!*

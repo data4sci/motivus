@@ -24,12 +24,14 @@
   background: transparent;
   color: var(--color-text);
   font-size: var(--size-body);
+  text-align: center;
   transition: border-color var(--duration-normal) ease;
 }
 
 .form-group input[type="email"]::placeholder {
   color: var(--color-text-muted);
   opacity: 0.6;
+  text-align: center;
 }
 
 .form-group input[type="email"]:focus {

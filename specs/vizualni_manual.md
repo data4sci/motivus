@@ -126,7 +126,7 @@ Kombinujeme tradiční patkové písmo (pro emoce a nadpisy) s moderním bezpatk
 ### **A. Web (Teaser Page)**
 
 * **Pozadí:** Paper White (#FAF9F7).
-* **Hero sekce:** Uprostřed dýchající animovaný symbol hlavního loga (kombinace). Žádný text, nebo jen velmi drobný serif: *"Než uděláte další krok."*
+* **Hero sekce:** Uprostřed dýchající animovaný symbol hlavního loga (kombinace). Žádný text, nebo jen velmi drobný serif: *"Něco se chystá!"*
 * **Tlačítka:** Pouze obrys (outline) v barvě Motivus Brown, při hoveru se vyplní.
 
 ### **B. Sociální sítě**

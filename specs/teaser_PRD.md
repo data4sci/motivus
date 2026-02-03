@@ -67,7 +67,7 @@ Návštěvník by měl:
 │              [symbol]               │
 │                                     │
 │                                     │
-│         Než uděláte další krok.     │
+│           Něco se chystá!           │
 │                                     │
 │                                     │
 └─────────────────────────────────────┘
@@ -81,8 +81,8 @@ Návštěvník by měl:
 - Negativní prostor je součástí sdělení — nech vizuál mluvit první
 - Může být i varianta bez textu v HERO — jen symbol a scroll hint
 
-**CZ:** Než uděláte další krok.
-**EN:** Before you take the next step.
+**CZ:** Něco se chystá!
+**EN:** Something is coming!
 
 **Alternativy (zrcadlení, ne velení):**
 
@@ -100,8 +100,7 @@ Návštěvník by měl:
 │                                     │
 │          Něco se chystá.            │
 │                                     │
-│     Místo pro lidi, kteří hledají   │
-│      skutečný směr, ne další návod. │
+│          Brzy to spustíme.          │
 │                                     │
 └─────────────────────────────────────┘
 ```
@@ -115,11 +114,11 @@ Návštěvník by měl:
 
 **CZ:**
 Něco se chystá.
-Místo pro lidi, kteří hledají skutečný směr, ne další návod.
+Brzy to spustíme.
 
 **EN:**
 Something is coming.
-A space for people seeking real direction, not another manual.
+We'll launch soon.
 
 ---
 
@@ -157,7 +156,7 @@ A space for people seeking real direction, not another manual.
 │   │ váš@email.cz            [→] │   │
 │   └─────────────────────────────┘   │
 │                                     │
-│        Žádný spam. Jen směr.        │
+│  Chci vědět víc. Zajímá mě to.      │
 │                                     │
 └─────────────────────────────────────┘
 ```
@@ -174,14 +173,14 @@ A space for people seeking real direction, not another manual.
 
 - Výzva: "Následujte náš kompas."
 - Placeholder: "váš@email.cz"
-- Poznámka: "Žádný spam. Jen směr."
+- Poznámka: "Dejte mi vědět, až to spustíte."
 - Success: "Díky. Ozveme se, až bude čas."
 
 **EN:**
 
 - Výzva: "Follow our compass."
 - Placeholder: "<your@email.com>"
-- Poznámka: "No spam. Just direction."
+- Poznámka: "I want to know more. I'm interested. Keep me posted."
 - Success: "Thank you. We'll reach out when the time comes."
 
 ---
@@ -352,7 +351,7 @@ A space for people seeking real direction, not another manual.
 
 **Otevírající otázku:**
 
-- "Než uděláte další krok."
+- "Něco se chystá!"
 - "Možná je čas se zastavit."
 - "Než to znovu rozjedete."
 
