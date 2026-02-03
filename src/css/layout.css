@@ -11,6 +11,30 @@
   padding: 0 1.5rem; /* 24px mobile */
 }
 
+/* Header */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  padding: var(--space-md) 0;
+  transition: background-color var(--duration-normal) ease;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-left: auto; /* Push to right */
+}
+
 /* Sections */
 .section {
   display: flex;
@@ -24,7 +48,8 @@
 
 /* HERO */
 .section-hero {
-  min-height: 70vh; /* Reduced from 90vh to reduce huge gap feeling */
+  min-height: 100vh; /* Full viewport height */
+  padding-top: var(--space-xxl); /* Account for header */
   text-align: center;
 }
 
@@ -44,6 +69,25 @@
   font-weight: var(--weight-light);
   color: var(--color-text);
   letter-spacing: var(--letter-spacing-wide);
+}
+
+.scroll-indicator {
+  margin-top: var(--space-xl);
+  color: var(--color-accent);
+  opacity: 0;
+  animation: fade-in-up 1s ease-out 1s forwards, bounce 2s infinite 2s;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
 }
 
 /* TENSION */
@@ -174,9 +218,7 @@
 }
 
 .footer-toggles {
-  display: flex;
-  align-items: center;
-  gap: var(--space-md);
+  display: none; /* Hidden in footer, moved to header */
 }
 
 .footer-social {
