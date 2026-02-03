@@ -13,18 +13,18 @@
 
 /* Header */
 .site-header {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 100;
-  padding: var(--space-md) 0;
+  padding: var(--space-lg) 0;
   transition: background-color var(--duration-normal) ease;
 }
 
 .header-content {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 
@@ -32,7 +32,6 @@
   display: flex;
   align-items: center;
   gap: var(--space-md);
-  margin-left: auto; /* Push to right */
 }
 
 /* Sections */
@@ -49,15 +48,22 @@
 /* HERO */
 .section-hero {
   min-height: 100vh; /* Full viewport height */
-  padding-top: var(--space-xxl); /* Account for header */
+  padding-top: var(--space-2xl); /* Account for header */
+  padding-bottom: var(--space-xl);
   text-align: center;
+  /* Use flex to center vertically if content is short, or allow scroll */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .hero-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-lg);
+  gap: var(--space-md); /* Reduced gap to fit everything */
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .hero-symbol {
@@ -271,7 +277,7 @@
 
   .footer-content {
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
   }
 }

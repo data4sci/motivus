@@ -89,12 +89,71 @@
     <!-- Header -->
     <header class="site-header">
       <div class="container header-content">
-        <div class="header-logo">
-          <!-- Optional: Small logo or brand name could go here -->
-        </div>
-
         <!-- Theme & Language Toggles (Moved from Footer) -->
         <div class="header-controls">
+          <!-- Spacer for centering (Hidden Theme Toggle Copy) -->
+          <button
+            class="toggle-btn"
+            type="button"
+            aria-hidden="true"
+            style="
+              visibility: hidden;
+              pointer-events: none;
+              opacity: 0;
+              width: 44px;
+              min-width: 44px;
+            "
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </button>
+
+          <!-- Language Toggle -->
+          <div
+            id="lang-toggle"
+            class="lang-toggle"
+            role="radiogroup"
+            aria-label="Language selection"
+          >
+            <button
+              class="lang-btn active"
+              type="button"
+              data-lang="cz"
+              role="radio"
+              aria-checked="true"
+            >
+              CZ
+            </button>
+            <span class="lang-divider">|</span>
+            <button
+              class="lang-btn"
+              type="button"
+              data-lang="en"
+              role="radio"
+              aria-checked="false"
+            >
+              EN
+            </button>
+          </div>
+
           <!-- Theme Toggle -->
           <button
             id="theme-toggle"
@@ -137,40 +196,12 @@
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
             </svg>
           </button>
-
-          <!-- Language Toggle -->
-          <div
-            id="lang-toggle"
-            class="lang-toggle"
-            role="radiogroup"
-            aria-label="Language selection"
-          >
-            <button
-              class="lang-btn active"
-              type="button"
-              data-lang="cz"
-              role="radio"
-              aria-checked="true"
-            >
-              CZ
-            </button>
-            <span class="lang-divider">|</span>
-            <button
-              class="lang-btn"
-              type="button"
-              data-lang="en"
-              role="radio"
-              aria-checked="false"
-            >
-              EN
-            </button>
-          </div>
         </div>
       </div>
     </header>
 
     <main id="main">
-      <!-- SECTION 1: HERO — Tiché přivítání -->
+      <!-- SECTION 1: HERO — Unified (Symbol, Message, Countdown, Form) -->
       <section class="section section-hero" aria-label="Hero">
         <div class="container">
           <div class="hero-content">
@@ -194,6 +225,73 @@
 
             <h1 class="hero-text" data-i18n="hero">Než uděláte další krok.</h1>
 
+            <!-- Countdown & Subtitle (Moved from Tension) -->
+            <div class="hero-tension fade-in">
+              <p class="countdown-line">
+                <span
+                  id="countdown"
+                  class="countdown-text"
+                  aria-live="polite"
+                ></span>
+              </p>
+              <p class="tension-line-2" data-i18n="tension2">
+                Místo pro lidi, kteří hledají skutečný směr, ne další návod.
+              </p>
+            </div>
+
+            <!-- Email Form (Moved from CTA) -->
+            <div class="hero-cta fade-in">
+              <form
+                id="waitlist-form"
+                class="waitlist-form collapsed-form"
+                action="https://formspree.io/f/YOUR_FORM_ID"
+                method="POST"
+              >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    required
+                    data-i18n-placeholder="placeholder"
+                    placeholder="váš@email.cz"
+                    data-i18n-aria-label="emailLabel"
+                    aria-label="Email address"
+                    autocomplete="email"
+                    inputmode="email"
+                  />
+                  <button
+                    type="submit"
+                    class="btn-submit"
+                    data-i18n-aria-label="submitEmail"
+                    aria-label="Submit email"
+                  >
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </button>
+                </div>
+
+                <p class="form-note" data-i18n="note">Žádný spam. Jen směr.</p>
+                <div
+                  class="form-message"
+                  role="status"
+                  aria-live="polite"
+                ></div>
+              </form>
+            </div>
+
             <!-- Scroll Indicator -->
             <div class="scroll-indicator" aria-hidden="true">
               <svg
@@ -213,26 +311,7 @@
         </div>
       </section>
 
-      <!-- SECTION 2: NAPĚTÍ — Tiché sdělení -->
-      <section class="section section-tension" aria-label="About">
-        <div class="container">
-          <div class="tension-content fade-in">
-            <p class="tension-line-1" data-i18n="tension1">Něco se chystá.</p>
-            <p class="countdown-line">
-              <span
-                id="countdown"
-                class="countdown-text"
-                aria-live="polite"
-              ></span>
-            </p>
-            <p class="tension-line-2" data-i18n="tension2">
-              Místo pro lidi, kteří hledají skutečný směr, ne další návod.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- SECTION 3: SYMBOLIKA — Vizuální jazyk -->
+      <!-- SECTION 2: SYMBOLIKA — (Moved below Hero) -->
       <section class="section section-symbols" aria-label="Our Vision">
         <div class="container">
           <div class="symbols-grid">
@@ -378,63 +457,7 @@
         </div>
       </section>
 
-      <!-- SECTION 4: VÝZVA — Email Waitlist -->
-      <section class="section section-cta" aria-label="Join Waitlist">
-        <div class="container">
-          <div class="cta-content fade-in">
-            <h2 class="cta-heading" data-i18n="cta">Následujte náš kompas.</h2>
-
-            <form
-              id="waitlist-form"
-              class="waitlist-form"
-              action="https://formspree.io/f/YOUR_FORM_ID"
-              method="POST"
-            >
-              <div class="form-group">
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  required
-                  data-i18n-placeholder="placeholder"
-                  placeholder="váš@email.cz"
-                  data-i18n-aria-label="emailLabel"
-                  aria-label="Email address"
-                  autocomplete="email"
-                  inputmode="email"
-                />
-                <button
-                  type="submit"
-                  class="btn-submit"
-                  data-i18n-aria-label="submitEmail"
-                  aria-label="Submit email"
-                >
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                  >
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
-                  </svg>
-                </button>
-              </div>
-
-              <p class="form-note" data-i18n="note">Žádný spam. Jen směr.</p>
-
-              <div class="form-message" role="status" aria-live="polite"></div>
-            </form>
-          </div>
-        </div>
-      </section>
-
-      <!-- SECTION 5: STAV — Mikrotext -->
+      <!-- SECTION 3: STAV — Mikrotext -->
       <section class="section section-status" aria-label="Status">
         <div class="container">
           <div class="status-content">
