@@ -63,7 +63,7 @@ src/
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/motivus.git
+git clone https://github.com/data4sci/motivus.git
 cd motivus
 ```
 
@@ -91,7 +91,7 @@ npx serve src
 
 The site is automatically deployed to GitHub Pages when pushing to the `main` branch via GitHub Actions.
 
-**Live site**: `https://YOUR_USERNAME.github.io/motivus/`
+**Live site**: `https://data4sci.github.io/motivus/`
 
 ### Custom Domain Setup (Optional)
 
