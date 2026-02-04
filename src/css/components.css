@@ -69,6 +69,15 @@
   top: 50%;
   right: calc(-44px - var(--space-sm));
   transform: translateY(-50%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.email-control input[type="email"]:not(:placeholder-shown) + .btn-submit {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .btn-submit:hover:not(:disabled),

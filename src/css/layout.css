@@ -18,7 +18,7 @@
   left: 0;
   width: 100%;
   z-index: 100;
-  padding: var(--space-lg) 0;
+  padding: calc(env(safe-area-inset-top) + var(--space-sm)) 0 var(--space-sm);
   transition: background-color var(--duration-normal) ease;
 }
 
