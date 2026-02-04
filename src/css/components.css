@@ -11,13 +11,18 @@
 
 .form-group {
   display: flex;
-  gap: var(--space-sm);
+  justify-content: center;
   align-items: center;
   width: 100%;
 }
 
+.email-control {
+  position: relative;
+  width: min(420px, calc(100% - 44px - var(--space-sm)));
+}
+
 .form-group input[type="email"] {
-  flex: 1;
+  width: 100%;
   padding: var(--space-sm) 0;
   border: none;
   border-bottom: 1px solid var(--color-border);
@@ -59,11 +64,23 @@
   flex-shrink: 0;
 }
 
+.email-control .btn-submit {
+  position: absolute;
+  top: 50%;
+  right: calc(-44px - var(--space-sm));
+  transform: translateY(-50%);
+}
+
 .btn-submit:hover:not(:disabled),
 .btn-submit:focus:not(:disabled) {
   background: var(--color-accent);
   color: var(--color-bg);
   transform: scale(1.05);
+}
+
+.email-control .btn-submit:hover:not(:disabled),
+.email-control .btn-submit:focus:not(:disabled) {
+  transform: translateY(-50%) scale(1.05);
 }
 
 .btn-submit:disabled {
